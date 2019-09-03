@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bdscams.amstest.mapper.DeviceMapper" >
+  <resultMap id="BaseResultMap" type="com.bdscams.amstest.entity.Device" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="DEV_NAME" property="devName" jdbcType="VARCHAR" />
+    <result column="DEV_NUM" property="devNum" jdbcType="VARCHAR" />
+    <result column="DEV_RESP_USER" property="devRespUser" jdbcType="BIGINT" />
+    <result column="DEV_DEPT" property="devDept" jdbcType="BIGINT" />
+    <result column="DEV_TYPE" property="devType" jdbcType="BIGINT" />
+    <result column="DEV_DESC" property="devDesc" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="REAL" />
+    <result column="NUMBER" property="number" jdbcType="SMALLINT" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="IS_SCRAP" property="isScrap" jdbcType="INTEGER" />
+    <result column="IS_FIXED" property="isFixed" jdbcType="TINYINT" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DEV_NAME, DEV_NUM, DEV_RESP_USER, DEV_DEPT, DEV_TYPE, DEV_DESC, PRICE, NUMBER, 
+    UPDATE_TIME, CREATE_TIME, IS_SCRAP, IS_FIXED, IS_DELETE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from amis_device
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from amis_device
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bdscams.amstest.entity.Device" >
+    insert into amis_device (ID, DEV_NAME, DEV_NUM, 
+      DEV_RESP_USER, DEV_DEPT, DEV_TYPE, 
+      DEV_DESC, PRICE, NUMBER, 
+      UPDATE_TIME, CREATE_TIME, IS_SCRAP, 
+      IS_FIXED, IS_DELETE)
+    values (#{id,jdbcType=BIGINT}, #{devName,jdbcType=VARCHAR}, #{devNum,jdbcType=VARCHAR}, 
+      #{devRespUser,jdbcType=BIGINT}, #{devDept,jdbcType=BIGINT}, #{devType,jdbcType=BIGINT}, 
+      #{devDesc,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, #{number,jdbcType=SMALLINT}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{isScrap,jdbcType=INTEGER}, 
+      #{isFixed,jdbcType=TINYINT}, #{isDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdscams.amstest.entity.Device" >
+    insert into amis_device
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="devName != null" >
+        DEV_NAME,
+      </if>
+      <if test="devNum != null" >
+        DEV_NUM,
+      </if>
+      <if test="devRespUser != null" >
+        DEV_RESP_USER,
+      </if>
+      <if test="devDept != null" >
+        DEV_DEPT,
+      </if>
+      <if test="devType != null" >
+        DEV_TYPE,
+      </if>
+      <if test="devDesc != null" >
+        DEV_DESC,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="number != null" >
+        NUMBER,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="isScrap != null" >
+        IS_SCRAP,
+      </if>
+      <if test="isFixed != null" >
+        IS_FIXED,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="devName != null" >
+        #{devName,jdbcType=VARCHAR},
+      </if>
+      <if test="devNum != null" >
+        #{devNum,jdbcType=VARCHAR},
+      </if>
+      <if test="devRespUser != null" >
+        #{devRespUser,jdbcType=BIGINT},
+      </if>
+      <if test="devDept != null" >
+        #{devDept,jdbcType=BIGINT},
+      </if>
+      <if test="devType != null" >
+        #{devType,jdbcType=BIGINT},
+      </if>
+      <if test="devDesc != null" >
+        #{devDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=SMALLINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isScrap != null" >
+        #{isScrap,jdbcType=INTEGER},
+      </if>
+      <if test="isFixed != null" >
+        #{isFixed,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdscams.amstest.entity.Device" >
+    update amis_device
+    <set >
+      <if test="devName != null" >
+        DEV_NAME = #{devName,jdbcType=VARCHAR},
+      </if>
+      <if test="devNum != null" >
+        DEV_NUM = #{devNum,jdbcType=VARCHAR},
+      </if>
+      <if test="devRespUser != null" >
+        DEV_RESP_USER = #{devRespUser,jdbcType=BIGINT},
+      </if>
+      <if test="devDept != null" >
+        DEV_DEPT = #{devDept,jdbcType=BIGINT},
+      </if>
+      <if test="devType != null" >
+        DEV_TYPE = #{devType,jdbcType=BIGINT},
+      </if>
+      <if test="devDesc != null" >
+        DEV_DESC = #{devDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=REAL},
+      </if>
+      <if test="number != null" >
+        NUMBER = #{number,jdbcType=SMALLINT},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isScrap != null" >
+        IS_SCRAP = #{isScrap,jdbcType=INTEGER},
+      </if>
+      <if test="isFixed != null" >
+        IS_FIXED = #{isFixed,jdbcType=TINYINT},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdscams.amstest.entity.Device" >
+    update amis_device
+    set DEV_NAME = #{devName,jdbcType=VARCHAR},
+      DEV_NUM = #{devNum,jdbcType=VARCHAR},
+      DEV_RESP_USER = #{devRespUser,jdbcType=BIGINT},
+      DEV_DEPT = #{devDept,jdbcType=BIGINT},
+      DEV_TYPE = #{devType,jdbcType=BIGINT},
+      DEV_DESC = #{devDesc,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=REAL},
+      NUMBER = #{number,jdbcType=SMALLINT},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      IS_SCRAP = #{isScrap,jdbcType=INTEGER},
+      IS_FIXED = #{isFixed,jdbcType=TINYINT},
+      IS_DELETE = #{isDelete,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

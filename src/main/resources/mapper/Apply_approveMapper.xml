@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bdscams.amstest.mapper.Apply_approveMapper" >
+  <resultMap id="BaseResultMap" type="com.bdscams.amstest.entity.Apply_approve" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="UUID" property="uuid" jdbcType="VARCHAR" />
+    <result column="APPLY_USER" property="applyUser" jdbcType="BIGINT" />
+    <result column="APPLY_DEV_TYPE" property="applyDevType" jdbcType="BIGINT" />
+    <result column="PRICE" property="price" jdbcType="BIGINT" />
+    <result column="NUM" property="num" jdbcType="BIGINT" />
+    <result column="APPLY_REASON" property="applyReason" jdbcType="VARCHAR" />
+    <result column="APPLY_NOTE" property="applyNote" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="INTEGER" />
+    <result column="IS_ALLOW" property="isAllow" jdbcType="INTEGER" />
+    <result column="IS_APPROVED" property="isApproved" jdbcType="INTEGER" />
+    <result column="APPROVE_REASON" property="approveReason" jdbcType="VARCHAR" />
+    <result column="APPROVE_USER" property="approveUser" jdbcType="BIGINT" />
+    <result column="APPROVE_TIME" property="approveTime" jdbcType="TIMESTAMP" />
+    <result column="APPROVE_DEV" property="approveDev" jdbcType="BIGINT" />
+    <result column="APPLY_DEV_NAME" property="applyDevName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, UUID, APPLY_USER, APPLY_DEV_TYPE, PRICE, NUM, APPLY_REASON, APPLY_NOTE, CREATE_TIME, 
+    IS_DELETE, IS_ALLOW, IS_APPROVED, APPROVE_REASON, APPROVE_USER, APPROVE_TIME, APPROVE_DEV, 
+    APPLY_DEV_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from amis_apply_approve
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from amis_apply_approve
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bdscams.amstest.entity.Apply_approve" >
+    insert into amis_apply_approve (ID, UUID, APPLY_USER, 
+      APPLY_DEV_TYPE, PRICE, NUM, 
+      APPLY_REASON, APPLY_NOTE, CREATE_TIME, 
+      IS_DELETE, IS_ALLOW, IS_APPROVED, 
+      APPROVE_REASON, APPROVE_USER, APPROVE_TIME, 
+      APPROVE_DEV, APPLY_DEV_NAME)
+    values (#{id,jdbcType=BIGINT}, #{uuid,jdbcType=VARCHAR}, #{applyUser,jdbcType=BIGINT}, 
+      #{applyDevType,jdbcType=BIGINT}, #{price,jdbcType=BIGINT}, #{num,jdbcType=BIGINT}, 
+      #{applyReason,jdbcType=VARCHAR}, #{applyNote,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=INTEGER}, #{isAllow,jdbcType=INTEGER}, #{isApproved,jdbcType=INTEGER}, 
+      #{approveReason,jdbcType=VARCHAR}, #{approveUser,jdbcType=BIGINT}, #{approveTime,jdbcType=TIMESTAMP}, 
+      #{approveDev,jdbcType=BIGINT}, #{applyDevName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdscams.amstest.entity.Apply_approve" >
+    insert into amis_apply_approve
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="uuid != null" >
+        UUID,
+      </if>
+      <if test="applyUser != null" >
+        APPLY_USER,
+      </if>
+      <if test="applyDevType != null" >
+        APPLY_DEV_TYPE,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="num != null" >
+        NUM,
+      </if>
+      <if test="applyReason != null" >
+        APPLY_REASON,
+      </if>
+      <if test="applyNote != null" >
+        APPLY_NOTE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="isAllow != null" >
+        IS_ALLOW,
+      </if>
+      <if test="isApproved != null" >
+        IS_APPROVED,
+      </if>
+      <if test="approveReason != null" >
+        APPROVE_REASON,
+      </if>
+      <if test="approveUser != null" >
+        APPROVE_USER,
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME,
+      </if>
+      <if test="approveDev != null" >
+        APPROVE_DEV,
+      </if>
+      <if test="applyDevName != null" >
+        APPLY_DEV_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUser != null" >
+        #{applyUser,jdbcType=BIGINT},
+      </if>
+      <if test="applyDevType != null" >
+        #{applyDevType,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=BIGINT},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=BIGINT},
+      </if>
+      <if test="applyReason != null" >
+        #{applyReason,jdbcType=VARCHAR},
+      </if>
+      <if test="applyNote != null" >
+        #{applyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isAllow != null" >
+        #{isAllow,jdbcType=INTEGER},
+      </if>
+      <if test="isApproved != null" >
+        #{isApproved,jdbcType=INTEGER},
+      </if>
+      <if test="approveReason != null" >
+        #{approveReason,jdbcType=VARCHAR},
+      </if>
+      <if test="approveUser != null" >
+        #{approveUser,jdbcType=BIGINT},
+      </if>
+      <if test="approveTime != null" >
+        #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveDev != null" >
+        #{approveDev,jdbcType=BIGINT},
+      </if>
+      <if test="applyDevName != null" >
+        #{applyDevName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdscams.amstest.entity.Apply_approve" >
+    update amis_apply_approve
+    <set >
+      <if test="uuid != null" >
+        UUID = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyUser != null" >
+        APPLY_USER = #{applyUser,jdbcType=BIGINT},
+      </if>
+      <if test="applyDevType != null" >
+        APPLY_DEV_TYPE = #{applyDevType,jdbcType=BIGINT},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=BIGINT},
+      </if>
+      <if test="num != null" >
+        NUM = #{num,jdbcType=BIGINT},
+      </if>
+      <if test="applyReason != null" >
+        APPLY_REASON = #{applyReason,jdbcType=VARCHAR},
+      </if>
+      <if test="applyNote != null" >
+        APPLY_NOTE = #{applyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isAllow != null" >
+        IS_ALLOW = #{isAllow,jdbcType=INTEGER},
+      </if>
+      <if test="isApproved != null" >
+        IS_APPROVED = #{isApproved,jdbcType=INTEGER},
+      </if>
+      <if test="approveReason != null" >
+        APPROVE_REASON = #{approveReason,jdbcType=VARCHAR},
+      </if>
+      <if test="approveUser != null" >
+        APPROVE_USER = #{approveUser,jdbcType=BIGINT},
+      </if>
+      <if test="approveTime != null" >
+        APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveDev != null" >
+        APPROVE_DEV = #{approveDev,jdbcType=BIGINT},
+      </if>
+      <if test="applyDevName != null" >
+        APPLY_DEV_NAME = #{applyDevName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdscams.amstest.entity.Apply_approve" >
+    update amis_apply_approve
+    set UUID = #{uuid,jdbcType=VARCHAR},
+      APPLY_USER = #{applyUser,jdbcType=BIGINT},
+      APPLY_DEV_TYPE = #{applyDevType,jdbcType=BIGINT},
+      PRICE = #{price,jdbcType=BIGINT},
+      NUM = #{num,jdbcType=BIGINT},
+      APPLY_REASON = #{applyReason,jdbcType=VARCHAR},
+      APPLY_NOTE = #{applyNote,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      IS_DELETE = #{isDelete,jdbcType=INTEGER},
+      IS_ALLOW = #{isAllow,jdbcType=INTEGER},
+      IS_APPROVED = #{isApproved,jdbcType=INTEGER},
+      APPROVE_REASON = #{approveReason,jdbcType=VARCHAR},
+      APPROVE_USER = #{approveUser,jdbcType=BIGINT},
+      APPROVE_TIME = #{approveTime,jdbcType=TIMESTAMP},
+      APPROVE_DEV = #{approveDev,jdbcType=BIGINT},
+      APPLY_DEV_NAME = #{applyDevName,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

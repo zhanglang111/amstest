@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bdscams.amstest.mapper.Dev_type_dictMapper" >
+  <resultMap id="BaseResultMap" type="com.bdscams.amstest.entity.Dev_type_dict" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="DEV_TYPE" property="devType" jdbcType="VARCHAR" />
+    <result column="DEV_DESC" property="devDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DEV_TYPE, DEV_DESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from amis_dev_type_dict
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from amis_dev_type_dict
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bdscams.amstest.entity.Dev_type_dict" >
+    insert into amis_dev_type_dict (ID, DEV_TYPE, DEV_DESC
+      )
+    values (#{id,jdbcType=BIGINT}, #{devType,jdbcType=VARCHAR}, #{devDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdscams.amstest.entity.Dev_type_dict" >
+    insert into amis_dev_type_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="devType != null" >
+        DEV_TYPE,
+      </if>
+      <if test="devDesc != null" >
+        DEV_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="devType != null" >
+        #{devType,jdbcType=VARCHAR},
+      </if>
+      <if test="devDesc != null" >
+        #{devDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdscams.amstest.entity.Dev_type_dict" >
+    update amis_dev_type_dict
+    <set >
+      <if test="devType != null" >
+        DEV_TYPE = #{devType,jdbcType=VARCHAR},
+      </if>
+      <if test="devDesc != null" >
+        DEV_DESC = #{devDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdscams.amstest.entity.Dev_type_dict" >
+    update amis_dev_type_dict
+    set DEV_TYPE = #{devType,jdbcType=VARCHAR},
+      DEV_DESC = #{devDesc,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

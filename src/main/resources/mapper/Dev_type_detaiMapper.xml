@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bdscams.amstest.mapper.Dev_type_detaiMapper" >
+  <resultMap id="BaseResultMap" type="com.bdscams.amstest.entity.Dev_type_detai" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="TYPE_ID" property="typeId" jdbcType="BIGINT" />
+    <result column="DEV_ID" property="devId" jdbcType="BIGINT" />
+    <result column="DEV_CPU" property="devCpu" jdbcType="VARCHAR" />
+    <result column="DEV_MEM" property="devMem" jdbcType="VARCHAR" />
+    <result column="DEV_DISK" property="devDisk" jdbcType="VARCHAR" />
+    <result column="DEV_OTHER" property="devOther" jdbcType="VARCHAR" />
+    <result column="DEV_SPEC" property="devSpec" jdbcType="VARCHAR" />
+    <result column="DEV_SIZE" property="devSize" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TYPE_ID, DEV_ID, DEV_CPU, DEV_MEM, DEV_DISK, DEV_OTHER, DEV_SPEC, DEV_SIZE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from amis_dev_type_detail
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from amis_dev_type_detail
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bdscams.amstest.entity.Dev_type_detai" >
+    insert into amis_dev_type_detail (ID, TYPE_ID, DEV_ID, 
+      DEV_CPU, DEV_MEM, DEV_DISK, 
+      DEV_OTHER, DEV_SPEC, DEV_SIZE
+      )
+    values (#{id,jdbcType=BIGINT}, #{typeId,jdbcType=BIGINT}, #{devId,jdbcType=BIGINT}, 
+      #{devCpu,jdbcType=VARCHAR}, #{devMem,jdbcType=VARCHAR}, #{devDisk,jdbcType=VARCHAR}, 
+      #{devOther,jdbcType=VARCHAR}, #{devSpec,jdbcType=VARCHAR}, #{devSize,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdscams.amstest.entity.Dev_type_detai" >
+    insert into amis_dev_type_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="typeId != null" >
+        TYPE_ID,
+      </if>
+      <if test="devId != null" >
+        DEV_ID,
+      </if>
+      <if test="devCpu != null" >
+        DEV_CPU,
+      </if>
+      <if test="devMem != null" >
+        DEV_MEM,
+      </if>
+      <if test="devDisk != null" >
+        DEV_DISK,
+      </if>
+      <if test="devOther != null" >
+        DEV_OTHER,
+      </if>
+      <if test="devSpec != null" >
+        DEV_SPEC,
+      </if>
+      <if test="devSize != null" >
+        DEV_SIZE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=BIGINT},
+      </if>
+      <if test="devId != null" >
+        #{devId,jdbcType=BIGINT},
+      </if>
+      <if test="devCpu != null" >
+        #{devCpu,jdbcType=VARCHAR},
+      </if>
+      <if test="devMem != null" >
+        #{devMem,jdbcType=VARCHAR},
+      </if>
+      <if test="devDisk != null" >
+        #{devDisk,jdbcType=VARCHAR},
+      </if>
+      <if test="devOther != null" >
+        #{devOther,jdbcType=VARCHAR},
+      </if>
+      <if test="devSpec != null" >
+        #{devSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="devSize != null" >
+        #{devSize,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdscams.amstest.entity.Dev_type_detai" >
+    update amis_dev_type_detail
+    <set >
+      <if test="typeId != null" >
+        TYPE_ID = #{typeId,jdbcType=BIGINT},
+      </if>
+      <if test="devId != null" >
+        DEV_ID = #{devId,jdbcType=BIGINT},
+      </if>
+      <if test="devCpu != null" >
+        DEV_CPU = #{devCpu,jdbcType=VARCHAR},
+      </if>
+      <if test="devMem != null" >
+        DEV_MEM = #{devMem,jdbcType=VARCHAR},
+      </if>
+      <if test="devDisk != null" >
+        DEV_DISK = #{devDisk,jdbcType=VARCHAR},
+      </if>
+      <if test="devOther != null" >
+        DEV_OTHER = #{devOther,jdbcType=VARCHAR},
+      </if>
+      <if test="devSpec != null" >
+        DEV_SPEC = #{devSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="devSize != null" >
+        DEV_SIZE = #{devSize,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdscams.amstest.entity.Dev_type_detai" >
+    update amis_dev_type_detail
+    set TYPE_ID = #{typeId,jdbcType=BIGINT},
+      DEV_ID = #{devId,jdbcType=BIGINT},
+      DEV_CPU = #{devCpu,jdbcType=VARCHAR},
+      DEV_MEM = #{devMem,jdbcType=VARCHAR},
+      DEV_DISK = #{devDisk,jdbcType=VARCHAR},
+      DEV_OTHER = #{devOther,jdbcType=VARCHAR},
+      DEV_SPEC = #{devSpec,jdbcType=VARCHAR},
+      DEV_SIZE = #{devSize,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

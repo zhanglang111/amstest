@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bdscams.amstest.mapper.Opt_logMapper" >
+  <resultMap id="BaseResultMap" type="com.bdscams.amstest.entity.Opt_log" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="UUID" property="uuid" jdbcType="VARCHAR" />
+    <result column="LOG_LEVEL" property="logLevel" jdbcType="BIGINT" />
+    <result column="OPT_TYPE" property="optType" jdbcType="BIGINT" />
+    <result column="OPT_DESC" property="optDesc" jdbcType="VARCHAR" />
+    <result column="OPT_USER" property="optUser" jdbcType="BIGINT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, UUID, LOG_LEVEL, OPT_TYPE, OPT_DESC, OPT_USER, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from amis_opt_log
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from amis_opt_log
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bdscams.amstest.entity.Opt_log" >
+    insert into amis_opt_log (ID, UUID, LOG_LEVEL, 
+      OPT_TYPE, OPT_DESC, OPT_USER, 
+      CREATE_TIME)
+    values (#{id,jdbcType=BIGINT}, #{uuid,jdbcType=VARCHAR}, #{logLevel,jdbcType=BIGINT}, 
+      #{optType,jdbcType=BIGINT}, #{optDesc,jdbcType=VARCHAR}, #{optUser,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdscams.amstest.entity.Opt_log" >
+    insert into amis_opt_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="uuid != null" >
+        UUID,
+      </if>
+      <if test="logLevel != null" >
+        LOG_LEVEL,
+      </if>
+      <if test="optType != null" >
+        OPT_TYPE,
+      </if>
+      <if test="optDesc != null" >
+        OPT_DESC,
+      </if>
+      <if test="optUser != null" >
+        OPT_USER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="logLevel != null" >
+        #{logLevel,jdbcType=BIGINT},
+      </if>
+      <if test="optType != null" >
+        #{optType,jdbcType=BIGINT},
+      </if>
+      <if test="optDesc != null" >
+        #{optDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="optUser != null" >
+        #{optUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdscams.amstest.entity.Opt_log" >
+    update amis_opt_log
+    <set >
+      <if test="uuid != null" >
+        UUID = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="logLevel != null" >
+        LOG_LEVEL = #{logLevel,jdbcType=BIGINT},
+      </if>
+      <if test="optType != null" >
+        OPT_TYPE = #{optType,jdbcType=BIGINT},
+      </if>
+      <if test="optDesc != null" >
+        OPT_DESC = #{optDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="optUser != null" >
+        OPT_USER = #{optUser,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdscams.amstest.entity.Opt_log" >
+    update amis_opt_log
+    set UUID = #{uuid,jdbcType=VARCHAR},
+      LOG_LEVEL = #{logLevel,jdbcType=BIGINT},
+      OPT_TYPE = #{optType,jdbcType=BIGINT},
+      OPT_DESC = #{optDesc,jdbcType=VARCHAR},
+      OPT_USER = #{optUser,jdbcType=BIGINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

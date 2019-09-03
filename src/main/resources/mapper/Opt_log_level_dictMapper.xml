@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bdscams.amstest.mapper.Opt_log_level_dictMapper" >
+  <resultMap id="BaseResultMap" type="com.bdscams.amstest.entity.Opt_log_level_dict" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="LEVEL" property="level" jdbcType="VARCHAR" />
+    <result column="DESC" property="desc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LEVEL, DESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from amis_opt_log_level_dict
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from amis_opt_log_level_dict
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bdscams.amstest.entity.Opt_log_level_dict" >
+    insert into amis_opt_log_level_dict (ID, LEVEL, DESC
+      )
+    values (#{id,jdbcType=BIGINT}, #{level,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdscams.amstest.entity.Opt_log_level_dict" >
+    insert into amis_opt_log_level_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="desc != null" >
+        DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        #{desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdscams.amstest.entity.Opt_log_level_dict" >
+    update amis_opt_log_level_dict
+    <set >
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null" >
+        DESC = #{desc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdscams.amstest.entity.Opt_log_level_dict" >
+    update amis_opt_log_level_dict
+    set LEVEL = #{level,jdbcType=VARCHAR},
+      DESC = #{desc,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

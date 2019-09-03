@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bdscams.amstest.mapper.Opt_log_type_dictMapper" >
+  <resultMap id="BaseResultMap" type="com.bdscams.amstest.entity.Opt_log_type_dict" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="OPT_TYPE" property="optType" jdbcType="VARCHAR" />
+    <result column="TYPE_DESC" property="typeDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, OPT_TYPE, TYPE_DESC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from amis_opt_log_type_dict
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from amis_opt_log_type_dict
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bdscams.amstest.entity.Opt_log_type_dict" >
+    insert into amis_opt_log_type_dict (ID, OPT_TYPE, TYPE_DESC
+      )
+    values (#{id,jdbcType=BIGINT}, #{optType,jdbcType=VARCHAR}, #{typeDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdscams.amstest.entity.Opt_log_type_dict" >
+    insert into amis_opt_log_type_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="optType != null" >
+        OPT_TYPE,
+      </if>
+      <if test="typeDesc != null" >
+        TYPE_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="optType != null" >
+        #{optType,jdbcType=VARCHAR},
+      </if>
+      <if test="typeDesc != null" >
+        #{typeDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdscams.amstest.entity.Opt_log_type_dict" >
+    update amis_opt_log_type_dict
+    <set >
+      <if test="optType != null" >
+        OPT_TYPE = #{optType,jdbcType=VARCHAR},
+      </if>
+      <if test="typeDesc != null" >
+        TYPE_DESC = #{typeDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdscams.amstest.entity.Opt_log_type_dict" >
+    update amis_opt_log_type_dict
+    set OPT_TYPE = #{optType,jdbcType=VARCHAR},
+      TYPE_DESC = #{typeDesc,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
