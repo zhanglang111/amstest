@@ -33,20 +33,36 @@
     //加载页面后加载次函数
     $().ready(function() {// 记住密码功能
         var str = decodeURIComponent(document.cookie.split(';')); // 获取Cookie
+        alert(str);
         // 以下是Cookie数据处理逻辑
         // 不同的项目存储的Cookie不同，处理数据的逻辑不同
         // 要根据具体的Cookie值来截取账号、密码
-        if (str.indexOf("loginInfo")>-1) {
-            var arr = str.split(",");
-            var loginInfo = arr[2];
-            var arr = loginInfo.split("+");
-            var name = arr[0];
-            name = name.substring(name.lastIndexOf("=", name.length - 1) + 1);
-            var phone = arr[1];
 
-            //自动填充用户名和密码
-            $("#account").val(name);
-            $("#pwd").val(phone);
-        }
+        var arr = str.split(",");
+        var name = arr[0];
+        name = name.substring(name.lastIndexOf("=", name.length - 1) + 1);
+        var phone = arr[1];
+
+        phone = phone.substring(phone.lastIndexOf("=", phone.length - 1) + 1);
+
+        //自动填充用户名和密码
+        $("#account").val(name);
+        $("#pwd").val(phone);
+
+
+
+
+        // if (str.indexOf("loginInfo")>-1) {
+        //     var arr = str.split(",");
+        //     var loginInfo = arr[2];
+        //     var arr = loginInfo.split("+");
+        //     var name = arr[0];
+        //     name = name.substring(name.lastIndexOf("=", name.length - 1) + 1);
+        //     var phone = arr[1];
+        //
+        //     //自动填充用户名和密码
+        //     $("#account").val(name);
+        //     $("#pwd").val(phone);
+        // }
     });
 </script>

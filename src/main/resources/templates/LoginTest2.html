@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/user/LoginTest2">
+        账号：<input type="text" id="username" name="username" placeholder="请输入账号">
+        密码：<input type="password" id="password" name="password" placeholder="请输入密码">
+        <div>
+            <input type="submit" value="登录">
+        </div>
+        <ul>
+            <li>
+                <label>
+                    <input type="checkbox" name="checkbox" value="1" checked="checked">
+                </label>
+                记住密码
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="checkbox" value="2" >
+                </label>
+                默认登录
+            </li>
+        </ul>
+
+
+
+    </form>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+        var cookies = document.cookie;
+        //获取数据
+        alert(cookies);
+        var arrs = cookies.split(";");
+        var name = arrs[0];
+        name = name.substring(name.lastIndexOf("=",name.length-1)+1);
+        $("#username").val(name);
+        var password = arrs[1];
+        password = password.substring(password.lastIndexOf("=",password.length-1)+1);
+        $("#password").val(password);
+
+    </script>
+</body>
+</html>

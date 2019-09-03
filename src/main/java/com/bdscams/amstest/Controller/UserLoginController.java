@@ -5,6 +5,7 @@ import com.bdscams.amstest.Vo.TestVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -48,10 +49,7 @@ public class UserLoginController {
         return "test";
     }
 
-    @RequestMapping("/logintest")
-    public String logintest(ModelMap map){
-        return "logintest";
-    }
+
 
     /**
      * 跳转到用户注册页面
@@ -108,6 +106,11 @@ public class UserLoginController {
         return "loginError";
     }
 
+    @RequestMapping("/logintest")
+    public String logintest(ModelMap map){
+        return "logintest";
+    }
+
     @PostMapping("/userLoginTest")
     public String userLoginTest(HttpServletRequest request, HttpServletResponse response){
         String[] checkbox = request.getParameterValues("checkbox");
@@ -154,4 +157,52 @@ public class UserLoginController {
 // 在测试中可能会出现一些问题，清除掉Cookie重新添加，在测试。
         return  "index";
     }
+
+    @RequestMapping("/test2")
+    public String test2(){
+        return "LoginTest2";
+    }
+
+
+    @GetMapping("/LoginTest2")
+    public String LoginTest2(HttpServletRequest request,HttpServletResponse response){
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        String[] checked = request.getParameterValues("checkbox");
+
+        if(checked != null){
+            for (String str:checked) {
+                if(str.equals("1")){
+                    //记住密码
+                    Cookie cookie1 = new Cookie("username",username);
+                    Cookie cookie2 = new Cookie("password",password);
+
+                    cookie1.setMaxAge(24*60*60*1000);
+                    cookie2.setMaxAge(24*60*60*1000);
+                    response.addCookie(cookie1);
+                    response.addCookie(cookie2);
+                }else{
+
+                }
+            }
+
+        }else{
+            Cookie cookie1 = new Cookie("username",username);
+            Cookie cookie2 = new Cookie("password",password);
+
+            cookie1.setMaxAge(0);
+            cookie2.setMaxAge(0);
+            response.addCookie(cookie1);
+            response.addCookie(cookie2);
+        }
+
+
+
+
+        return "index";
+    }
+
+
 }
+
