@@ -161,4 +161,25 @@
       IS_DELETE = #{isDelete,jdbcType=INTEGER}
     where ID = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="userlogin" resultType="int">
+    SELECT
+      u.ID,
+      u.`NAME`,
+      u.PASSWD,
+      u.STU_NUM,
+      u.SEX,
+      u.PHONE,
+      u.E_MAIL,
+      u.CREATE_TIME,
+      u.UPDATE_TIME,
+      u.IS_GRADUATE,
+      u.IS_DELETE
+    FROM
+      amis_user AS u
+    WHERE
+      u.STU_NUM = #{param1} AND
+      u.PASSWD = #{param2}
+
+  </select>
 </mapper>

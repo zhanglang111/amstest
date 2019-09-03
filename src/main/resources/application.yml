@@ -7,8 +7,6 @@ spring:
     username: root
     password: King@102321
     driver-class-name: com.mysql.jdbc.Driver
-
-
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.bdscams.amstest.entity

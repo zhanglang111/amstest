@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>登录成功</title>
 </head>
 <body>
-<h1>用户名与密码正确，登录成功！！！</h1>
+<header>
+    <div th:include="header::title">
+    </div>
+</header>
+<p th:text="${session.username}"></p>
 
+<h1>用户名与密码正确，登录成功！！！</h1>
+<div th:include="footer::copyright">
+</div>
 </body>
 </html>

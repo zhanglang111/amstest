@@ -1,7 +1,9 @@
 package com.bdscams.amstest.mapper;
 
 import com.bdscams.amstest.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +16,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //网页登录
+    int userlogin(String username,String password);
 }

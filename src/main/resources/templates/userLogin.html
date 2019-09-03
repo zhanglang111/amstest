@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>用户登录</title>
@@ -7,10 +7,11 @@
 <body>
 请输入用户名与密码登录
 <form action="/user/userLogin" method="post">
-    用户名：<input type="text" name="username" /><br>
-    密&nbsp;&nbsp;&nbsp;码：<input type="password" name="password" /><br>
+    用户名：<input type="text" name="username" th:value="${name}" /><br>
+    密&nbsp;&nbsp;&nbsp;码：<input type="password" name="password"/><br>
     <input type="submit" value="登录" />
     <a href="/user/registerpage" target="_blank">注册</a>
 </form>
+<!--<p th:text="'我是'"></p>-->
 </body>
 </html>
